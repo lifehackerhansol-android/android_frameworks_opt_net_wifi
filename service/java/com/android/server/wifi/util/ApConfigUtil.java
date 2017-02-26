@@ -33,6 +33,7 @@ public class ApConfigUtil {
 
     public static final int DEFAULT_AP_BAND = WifiConfiguration.AP_BAND_2GHZ;
     public static final int DEFAULT_AP_CHANNEL = 6;
+    public static final int DEFAULT_5GHz_AP_CHANNEL = 149;
 
     /* Return code for updateConfiguration. */
     public static final int SUCCESS = 0;
@@ -97,7 +98,8 @@ public class ApConfigUtil {
         }
 
         Log.e(TAG, "No available channels on 5GHz band");
-        return -1;
+        Log.e(TAG, "[fullgreen test]Set to 149 channels");
+        return DEFAULT_5GHz_AP_CHANNEL;
     }
 
     /**
@@ -123,8 +125,8 @@ public class ApConfigUtil {
         /* Country code is mandatory for 5GHz band. */
         if (config.apBand == WifiConfiguration.AP_BAND_5GHZ
                 && countryCode == null) {
-            Log.e(TAG, "5GHz band is not allowed without country code");
-            return ERROR_GENERIC;
+            Log.e(TAG, "[fullgreen test]5GHz band is not allowed without country code");
+            return SUCCESS;
         }
 
         /* Select a channel if it is not specified. */
